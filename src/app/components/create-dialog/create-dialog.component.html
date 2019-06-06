@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+    <h1 mat-dialog-title>Create book</h1>
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput formControlName="bookTitle" placeholder="title" value="">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="bookAuthor" placeholder="author" value="">
+      </mat-form-field>
+      <ngx-recaptcha2 #captchaElem
+      [siteKey]="getSiteKey()"
+      (reset)="handleReset()"
+      (expire)="handleExpire()"
+      (load)="handleLoad()"
+      (success)="handleSuccess($event)"
+      [useGlobalDomain]="false"
+      [size]="size"
+      [hl]="lang"
+      [theme]="theme"
+      [type]="type"
+      formControlName="recaptcha">
+    </ngx-recaptcha2>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button type="submit">Create</button>
+      <button mat-button type="button" mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+  </form>

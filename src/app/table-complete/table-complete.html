@@ -1,0 +1,48 @@
+<div class="container">
+
+
+  <div class="row">
+
+    <!-- LIST -->
+    <div class=col-md-12>
+      <form id="form-list-client">
+        <legend>List of books</legend>
+
+        <ngx-spinner fullScreen=false bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff"
+          type="ball-scale-multiple">
+          <p style="font-size: 20px; color: white">Loading...</p>
+        </ngx-spinner>
+
+        <div class="pull-right">
+          <a class="btn btn-default btn-sm" (click)="refreshBookList()"><i class="glyphicon glyphicon-refresh"></i> </a>
+          <a class="btn btn-default btn-sm" (click)="openDialogCreate()"><i class="glyphicon glyphicon-plus"></i> </a>
+        </div>
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Actions</th>
+            </tr>
+
+          </thead>
+          <tbody id="form-list-client-body">
+
+            <tr *ngFor="let book of bookList">
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
+              <td>
+                <a title="edit this book" (click)="openDialogEdit(book)" class="btn btn-default btn-sm "> <i
+                    class="glyphicon glyphicon-edit text-primary"></i> </a>
+                <a title="delete this book" (click)="openDialogDelete(book._id)" class="btn btn-default btn-sm "> <i
+                    class="glyphicon glyphicon-trash text-danger"></i> </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+
+  </div>
+</div>
